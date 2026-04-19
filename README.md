@@ -42,12 +42,4 @@ The goal of this project is to understand CRUD operations (Create, Read, Update,
 
 ---
 
-## 📷 Preview
 
-(Add a screenshot here)
-
----
-
-## 🔗 Live Demo
-
-(Add your deployed link here)
