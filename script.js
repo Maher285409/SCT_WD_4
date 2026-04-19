@@ -28,10 +28,17 @@ function login() {
   document.getElementById("loginPage").style.display = "none";
   document.getElementById("appPage").style.display   = "block";
   document.getElementById("greetMsg").textContent    = "Hello, " + name + " 👋";
-  document.getElementById("dateStr").textContent     = new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+  document.getElementById("dateStr").textContent     = new Date().toLocaleDateString("en-US", {
+    weekday: "long", month: "long", day: "numeric"
+  });
   setVideo(null);
   loadTasks();
   renderTasks();
+
+  // On mobile default to tasks view; on desktop both views are always visible
+  if (window.innerWidth <= 768) {
+    showView("tasks");
+  }
 }
 
 function logout() {
@@ -88,8 +95,12 @@ function deleteTask(id) {
 // ── FILTER & RENDER ───────────────────────────────────
 function setFilter(f, btn) {
   currentFilter = f;
+  // Sync desktop sidebar buttons
   document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
   if (btn) btn.classList.add("active");
+  // Sync mobile dropdown
+  const mobileSelect = document.querySelector(".mobile-filter-select");
+  if (mobileSelect) mobileSelect.value = f;
   renderTasks();
 }
 
@@ -103,9 +114,20 @@ function renderTasks() {
   });
 
   // stats
-  document.getElementById("statTotal").textContent   = tasks.length;
-  document.getElementById("statPending").textContent = tasks.filter(t => !t.done).length;
-  document.getElementById("statDone").textContent    = tasks.filter(t =>  t.done).length;
+  const total   = tasks.length;
+  const pending = tasks.filter(t => !t.done).length;
+  const done    = tasks.filter(t =>  t.done).length;
+
+  document.getElementById("statTotal").textContent   = total;
+  document.getElementById("statPending").textContent = pending;
+  document.getElementById("statDone").textContent    = done;
+
+  // progress bar
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const bar = document.getElementById("progressBar");
+  const pctLabel = document.getElementById("progressPct");
+  if (bar)      bar.style.width = pct + "%";
+  if (pctLabel) pctLabel.textContent = pct + "%";
 
   const ul    = document.getElementById("taskList");
   const empty = document.getElementById("emptyState");
@@ -142,7 +164,7 @@ function priorityDot(p) {
 // ── THEME ─────────────────────────────────────────────
 function toggleTheme() {
   const light = document.body.classList.toggle("light");
-  document.querySelector(".theme-btn").textContent = light ? "☀️ Light" : "🌙 Dark";
+  document.querySelector(".theme-btn").textContent = light ? "🌙 Dark" : "☀️ Light";
 }
 
 // ── PERSIST ───────────────────────────────────────────
@@ -159,4 +181,30 @@ function escapeHtml(s) {
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
+// ── VIEW SWITCHER (mobile only) ───────────────────────
+function showView(view) {
+  // On desktop CSS forces both panels visible — do nothing
+  if (window.innerWidth > 768) return;
+
+  const dashboardView = document.getElementById("dashboardView");
+  const tasksView     = document.getElementById("tasksView");
+
+  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+
+  if (view === "dashboard") {
+    dashboardView.style.display = "block";
+    tasksView.style.display     = "none";
+    // Second tab = dashboard
+    const tabs = document.querySelectorAll(".tab-btn");
+    if (tabs[1]) tabs[1].classList.add("active");
+  } else {
+    dashboardView.style.display = "none";
+    tasksView.style.display     = "block";
+    // First tab = tasks
+    const tabs = document.querySelectorAll(".tab-btn");
+    if (tabs[0]) tabs[0].classList.add("active");
+  }
+}
+
+// ── INIT ─────────────────────────────────────────────
 setVideo(VIDEO_URL);

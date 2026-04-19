@@ -1,207 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Planr — Stay Focused</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasko — Stay Focused</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- SINGLE SHARED BACKGROUND VIDEO -->
+    <video id="bgVideo" autoplay muted loop playsinline></video>
+    <div id="videoOverlay"></div>
 
-  <!-- SINGLE SHARED BACKGROUND VIDEO -->
-  <video id="bgVideo" autoplay muted loop playsinline></video>
-  <div id="videoOverlay"></div>
-
-  <!-- ==================== LANDING ==================== -->
-  <div id="landingPage">
-    <nav class="navbar">
-      <h2>Planr</h2>
-      <div class="navbar-links">
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <a href="#start">Get Started</a>
-      </div>
-    </nav>
-
-    <section class="hero">
-      <div class="hero-overlay">
-        <span class="hero-badge">✦ Your personal task system</span>
-        <h1>Plan your day.<br/>Own your time.</h1>
-        <p>Stay organized, focused, and productive — one task at a time.</p>
-        <div class="hero-cta">
-          <button class="btn-primary" onclick="goToLogin()">Get Started</button>
-          <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">See Features</button>
+    <!-- ==================== LANDING ==================== -->
+    <div id="landingPage">
+      <nav class="navbar">
+        <h2>Tasko</h2>
+        <div class="navbar-links">
+          <a href="#features">Features</a>
+          <a href="#about">About</a>
+          <a href="#start">Get Started</a>
         </div>
-      </div>
-    </section>
+      </nav>
 
-    <hr class="section-divider"/>
-
-    <section id="features" class="section">
-      <p class="section-tag">What you get</p>
-      <h2>Everything you need, nothing you don't</h2>
-      <div class="cards">
-        <div class="card">
-          <span class="card-icon">📋</span>
-          <h3>Task Management</h3>
-          <p>Add tasks with priority, due date, and category in seconds.</p>
+      <section class="hero">
+        <div class="hero-overlay">
+          <span class="hero-badge">✦ Your personal task system</span>
+          <h1>Plan your day.<br />Own your time.</h1>
+          <p>Stay organized, focused, and productive — one task at a time.</p>
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="goToLogin()">
+              Get Started
+            </button>
+            <button
+              class="btn-ghost"
+              onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})"
+            >
+              See Features
+            </button>
+          </div>
         </div>
-        <div class="card">
-          <span class="card-icon">🔍</span>
-          <h3>Instant Search</h3>
-          <p>Find any task instantly with live search and smart filters.</p>
+      </section>
+
+      <hr class="section-divider" />
+
+      <section id="features" class="section">
+        <p class="section-tag">What you get</p>
+        <h2>Everything you need, nothing you don't</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="card-icon">📋</span>
+            <h3>Task Management</h3>
+            <p>Add tasks with priority, due date, and category in seconds.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🔍</span>
+            <h3>Instant Search</h3>
+            <p>Find any task instantly with live search and smart filters.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🎯</span>
+            <h3>Stay Focused</h3>
+            <p>
+              Visual priority system keeps your most important work front and
+              center.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">💾</span>
+            <h3>Auto Save</h3>
+            <p>Your tasks save automatically and persist across sessions.</p>
+          </div>
         </div>
-        <div class="card">
-          <span class="card-icon">🎯</span>
-          <h3>Stay Focused</h3>
-          <p>Visual priority system keeps your most important work front and center.</p>
-        </div>
-        <div class="card">
-          <span class="card-icon">💾</span>
-          <h3>Auto Save</h3>
-          <p>Your tasks save automatically and persist across sessions.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <hr class="section-divider"/>
+      <hr class="section-divider" />
 
-    <section id="about" class="section">
-      <p class="section-tag">About</p>
-      <h2>Built for people who want to get things done</h2>
-      <p style="color:var(--text-sub); max-width:520px; margin:0 auto; font-size:15px; line-height:1.8;">
-        Planr is a minimal, distraction-free task manager that helps you organize your day without getting in the way.
-      </p>
-    </section>
+      <section id="about" class="section">
+        <p class="section-tag">About</p>
+        <h2>Built for people who want to get things done</h2>
+        <p
+          style="
+            color: var(--text-sub);
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 15px;
+            line-height: 1.8;
+          "
+        >
+         Tasko is a minimal, distraction-free task manager that helps you
+          organize your day without getting in the way.
+        </p>
+      </section>
 
-    <hr class="section-divider"/>
+      <hr class="section-divider" />
 
-    <section id="start" class="cta-section">
-      <h2>Ready to take control?</h2>
-      <p>Start organizing your tasks in under 10 seconds.</p>
-      <button class="btn-primary" onclick="goToLogin()" style="padding:13px 32px; font-size:15px;">
-        Launch Planr →
-      </button>
-    </section>
-  </div>
-
-  <!-- ==================== LOGIN ==================== -->
-  <div id="loginPage">
-    <div class="login-left">
-      <div class="login-logo">Planr</div>
-      <h1>Welcome back.</h1>
-      <p class="tagline">"Small steps every day lead to big results."</p>
-      <div class="login-form">
-        <div>
-          <label>Your name</label>
-          <input type="text" id="username" placeholder="Enter your name"
-            onkeydown="if(event.key==='Enter') login()"/>
-        </div>
-        <button onclick="login()">Continue →</button>
-      </div>
+      <section id="start" class="cta-section">
+        <h2>Ready to take control?</h2>
+        <p>Start organizing your tasks in under 10 seconds.</p>
+        <button
+          class="btn-primary"
+          onclick="goToLogin()"
+          style="padding: 13px 32px; font-size: 15px"
+        >
+          Launch Tasko →
+        </button>
+      </section>
     </div>
-    <div class="login-right-spacer"></div>
-  </div>
 
-  <!-- ==================== APP ==================== -->
-  <div id="appPage">
-    <div class="app">
-
-      <!-- SIDEBAR -->
-      <div class="sidebar">
-        <div class="sidebar-logo">Planr</div>
-
-        <p class="sidebar-section-label">Menu</p>
-        <div class="nav-links">
-          <div class="nav-item active">📋 &nbsp;Tasks</div>
-          <div class="nav-item">📊 &nbsp;Analytics</div>
-        </div>
-
-        <p class="sidebar-section-label">Filter</p>
-        <div class="filter-group">
-          <button class="filter-btn active" onclick="setFilter('all',this)">◉ &nbsp;All tasks</button>
-          <button class="filter-btn" onclick="setFilter('pending',this)">○ &nbsp;Pending</button>
-          <button class="filter-btn" onclick="setFilter('completed',this)">✓ &nbsp;Completed</button>
-        </div>
-
-        <div class="sidebar-bottom">
-          <button class="logout-btn" onclick="logout()">← Logout</button>
+    <!-- ==================== LOGIN ==================== -->
+    <div id="loginPage">
+      <div class="login-left">
+        <div class="login-logo">Tasko</div>
+        <h1>Welcome back.</h1>
+        <p class="tagline">"Small steps every day lead to big results."</p>
+        <div class="login-form">
+          <div>
+            <label>Your name</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your name"
+              onkeydown="if(event.key==='Enter') login()"
+            />
+          </div>
+          <button onclick="login()">Continue →</button>
         </div>
       </div>
+      <div class="login-right-spacer"></div>
+    </div>
 
-      <!-- MAIN -->
-      <div class="container">
-        <div class="content-header">
-          <div class="header-left">
-            <h3 id="greetMsg">My Tasks</h3>
-            <p id="dateStr"></p>
+    <!-- ==================== APP ==================== -->
+    <div id="appPage">
+      <!-- MOBILE TABS -->
+      <div class="mobile-tabs">
+        <button class="tab-btn active" onclick="showView('tasks')">
+          📋 Tasks
+        </button>
+        <button class="tab-btn" onclick="showView('dashboard')">
+          📊 Dashboard
+        </button>
+      </div>
+
+      <div class="app">
+        <!-- SIDEBAR (DESKTOP ONLY) -->
+        <div class="sidebar">
+          <div class="sidebar-logo">Tasko</div>
+
+          <p class="sidebar-section-label">Menu</p>
+          <div class="nav-links">
+            <div class="nav-item active">📋 Tasks</div>
+            <div class="nav-item">📊 Analytics</div>
           </div>
-          <div class="header-right">
-            <button class="theme-btn" onclick="toggleTheme()">🌙 Dark</button>
+
+          <p class="sidebar-section-label">Filter</p>
+          <div class="filter-group">
+            <button class="filter-btn active" onclick="setFilter('all',this)">
+              ◉ All tasks
+            </button>
+            <button class="filter-btn" onclick="setFilter('pending',this)">
+              ○ Pending
+            </button>
+            <button class="filter-btn" onclick="setFilter('completed',this)">
+              ✓ Completed
+            </button>
+          </div>
+
+          <div class="sidebar-bottom">
+            <button class="logout-btn" onclick="logout()">← Logout</button>
           </div>
         </div>
 
-        <div class="stats-strip">
-          <div class="stat">
-            <span class="stat-val" id="statTotal">0</span>
-            <span class="stat-label">Total</span>
-          </div>
-          <div class="stat">
-            <span class="stat-val" id="statPending" style="color:var(--yellow)">0</span>
-            <span class="stat-label">Pending</span>
-          </div>
-          <div class="stat">
-            <span class="stat-val" id="statDone" style="color:var(--green)">0</span>
-            <span class="stat-label">Done</span>
-          </div>
-        </div>
-
-        <div class="task-area">
-          <div class="add-task-bar">
-            <input type="text" id="taskInput" placeholder="Add a new task…"
-              onkeydown="if(event.key==='Enter') openTaskMeta()"/>
-            <button class="add-btn" onclick="openTaskMeta()">+</button>
+        <!-- MAIN -->
+        <div class="container">
+          <!-- HEADER -->
+          <div class="content-header">
+            <div class="header-left">
+              <h3 id="greetMsg">My Tasks</h3>
+              <p id="dateStr"></p>
+            </div>
+            <div class="header-right">
+              <!-- Mobile filter dropdown -->
+              <select class="mobile-filter-select" onchange="setFilter(this.value, null)">
+                <option value="all">◉ All</option>
+                <option value="pending">○ Pending</option>
+                <option value="completed">✓ Done</option>
+              </select>
+              <button class="theme-btn" onclick="toggleTheme()">☀️ Light</button>
+            </div>
           </div>
 
-          <div class="task-meta-panel" id="taskMetaPanel" style="display:none;">
-            <div class="meta-fields">
-              <div class="meta-field">
-                <label>Priority</label>
-                <select id="priority">
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                  <option value="Low">Low</option>
-                </select>
+          <!-- ================= DASHBOARD VIEW ================= -->
+          <div id="dashboardView">
+            <div class="stats-strip">
+              <div class="stat">
+                <span class="stat-val" id="statTotal">0</span>
+                <span class="stat-label">Total</span>
               </div>
-              <div class="meta-field">
-                <label>Due Date</label>
-                <input type="date" id="dueDate"/>
+              <div class="stat">
+                <span class="stat-val" id="statPending" style="color: var(--yellow)">0</span>
+                <span class="stat-label">Pending</span>
               </div>
-              <div class="meta-field">
-                <label>Category</label>
-                <input type="text" id="category" placeholder="e.g. Work"/>
+              <div class="stat">
+                <span class="stat-val" id="statDone" style="color: var(--green)">0</span>
+                <span class="stat-label">Done</span>
               </div>
             </div>
-            <div class="meta-actions">
-              <button class="confirm-btn" onclick="addTask()">✓ Add Task</button>
-              <button class="cancel-btn"  onclick="closeTaskMeta()">Cancel</button>
+
+            <!-- Progress bar -->
+            <div class="dashboard-extra">
+              <div class="progress-label">
+                <span>Completion</span>
+                <span id="progressPct">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" id="progressBar" style="width:0%"></div>
+              </div>
             </div>
           </div>
 
-          <input type="text" id="search" placeholder="Search tasks…" oninput="renderTasks()"/>
+          <!-- ================= TASK VIEW ================= -->
+          <div id="tasksView">
+            <div class="task-area">
+              <div class="add-task-bar">
+                <input
+                  type="text"
+                  id="taskInput"
+                  placeholder="Add a new task…"
+                  onkeydown="if(event.key==='Enter') openTaskMeta()"
+                />
+                <button class="add-btn" onclick="openTaskMeta()">+</button>
+              </div>
 
-          <ul id="taskList"></ul>
+              <!-- META PANEL -->
+              <div
+                class="task-meta-panel"
+                id="taskMetaPanel"
+                style="display: none"
+              >
+                <div class="meta-fields">
+                  <div class="meta-field">
+                    <label>Priority</label>
+                    <select id="priority">
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                      <option value="Low">Low</option>
+                    </select>
+                  </div>
+                  <div class="meta-field">
+                    <label>Due Date</label>
+                    <input type="date" id="dueDate" />
+                  </div>
+                  <div class="meta-field">
+                    <label>Category</label>
+                    <input type="text" id="category" placeholder="e.g. Work" />
+                  </div>
+                </div>
+                <div class="meta-actions">
+                  <button class="confirm-btn" onclick="addTask()">✓ Add Task</button>
+                  <button class="cancel-btn" onclick="closeTaskMeta()">Cancel</button>
+                </div>
+              </div>
 
-          <div id="emptyState">
-            <span class="empty-icon">📭</span>
-            No tasks yet. Add your first one above.
+              <input
+                type="text"
+                id="search"
+                placeholder="Search tasks…"
+                oninput="renderTasks()"
+              />
+
+              <ul id="taskList"></ul>
+
+              <div id="emptyState">
+                <span class="empty-icon">📭</span>
+                No tasks yet. Add your first one above.
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
